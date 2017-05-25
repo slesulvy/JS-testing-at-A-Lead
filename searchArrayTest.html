@@ -1,0 +1,35 @@
+
+<html>
+    <head>
+        <title>test</title>
+    </head>
+
+    <body>
+
+        <h1>Search Json Array, Please see the result in console.</h1>
+        <script>
+                var superHeroList = [
+                    {id:1, name:"Oliver Queen", title:"Arrow"},
+                    {id:2, name:"Clark Kent", title:"Superman"},
+                    {id:3, name:"Steve Rogers", title:"Captain America"},
+                    {id:4, name:"Peter Parker", title:"Spiderman"},
+                ];
+
+               function searchByFieldName( superHeroListObj, fieldName, keyword ){
+                    for( objs in superHeroListObj )
+                    {
+                        if( superHeroListObj[objs] != null && superHeroListObj[objs][fieldName] === keyword ){
+                            return superHeroListObj[objs];
+                        }
+                    }
+                }
+
+                var spiderMan = searchByFieldName(superHeroList, "name","Peter Parker");
+                var superMan = searchByFieldName(superHeroList, "title", "Superman");
+            
+                console.log(JSON.stringify(spiderMan));
+                console.log(JSON.stringify(superMan));
+                               
+        </script>
+    </body>
+</html>

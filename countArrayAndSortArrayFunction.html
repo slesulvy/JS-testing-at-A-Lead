@@ -1,0 +1,60 @@
+
+<html>
+    <head>
+        <title>test</title>
+    </head>
+
+    <body>
+
+        <h1>Count Array and sortArray Function. Please see the result in the console.</h1>
+        <script>
+                
+                var fruits = [ 
+                    "Mengo", "Pineapple", "Apple", "Banana", "Pineapple", "Lemon", 
+                    "Apple", "Banana", "Mengo", "Pineapple", "Lemon", "Banana", 
+                    "Mengo", "Lemon", "Apple", "Mengo", "Pineapple", "Lemon", 
+                    "Apple", "Banana", "Mengo", "Pineapple", "Lemon", "Banana"
+                    ];
+
+                function countFruit(myFruits){
+                   var counts = {};
+                    for (var i = 0; i < myFruits.length; i++){
+                        counts[myFruits[i]] = (counts[myFruits[i]] + 1) || 1;
+                    }
+                        
+                    return counts;
+                }
+
+                var fruitList = countFruit(fruits); 
+                console.log(JSON.stringify(fruitList)) 
+
+            
+
+              function arrayCompare(a, b) {
+                    var ax = [], bx = [];
+
+                    a.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { ax.push([$1 || Infinity, $2 || ""]) });
+                    b.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { bx.push([$1 || Infinity, $2 || ""]) });
+                    
+                    while(ax.length && bx.length) {
+                        var an = ax.shift();
+                        var bn = bx.shift();
+                        var nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1]);
+                        if(nn) return nn;
+                    }
+
+                    return ax.length - bx.length;
+                }
+
+                var randomList = ["D", "1", "33", "B", "14", "A", "56", "3", "C", "2", "6", "7", "20"];
+                
+                function sortArray(array){
+                  return randomList.sort(arrayCompare);
+                }
+
+                var myArray = sortArray(randomList);
+                console.log(myArray);
+            
+        </script>
+    </body>
+</html>
